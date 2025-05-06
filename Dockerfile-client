@@ -1,0 +1,19 @@
+FROM node:18-alpine3.15 as build
+
+# Install dependencies
+RUN apk add --no-cache protoc yarn
+
+WORKDIR /app
+
+
+COPY ./frontend/package.json .
+COPY ./frontend/package-lock.json .
+COPY ./proto/ping.proto .
+
+RUN npm install
+
+
+COPY ./frontend . 
+
+EXPOSE 8081
+CMD ["npm", "start"]

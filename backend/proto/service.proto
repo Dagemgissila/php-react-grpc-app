@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package mereb;
+
+option php_namespace = "App"; // Add this line
+option php_metadata_namespace = "App\\GPBMetadata";
+
+service PingService {
+  rpc Ping (PingRequest) returns (PingResponse);
+}
+
+message PingRequest {
+  string message = 1;
+}
+
+message PingResponse {
+  string message = 1;
+}
